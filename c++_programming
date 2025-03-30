@@ -1,0 +1,62 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <algorithm> // for std::transform
+#include <cctype>    // for std::tolower
+
+using namespace std;
+
+int main() {
+    map<string, string> Dictionary = {
+        {"deflection", "how much a structure bends under weight"},
+        {"slab", "a flat concrete surface in buildings"},
+        {"column", "a vertical support that carries weight"},
+        {"shear force", "a force that makes material slide apart"},
+        {"permeability", "how easily water moves through soil"},
+        {"beam", "a horizontal support that resists bending"},
+        {"foundation", "the base that spreads a structure’s load"},
+        {"concrete", "a mix of cement, sand, gravel, and water"},
+        {"cement", "a binder for concrete and mortar"},
+        {"bricks", "clay or concrete blocks used for building"},
+        {"bending moment", "a force that bends a beam"},
+        {"footing", "the foundation’s base that supports weight"},
+        {"dead load", "a structure’s permanent weight"},
+        {"live load", "temporary weight like people or furniture"},
+        {"compaction", "densifying soil for strength"},
+        {"slope stability", "soil’s resistance to landslides"},
+        {"asphalt", "a petroleum based road material"},
+        {"steel reinforcement", "steel bars that strengthen concrete"},
+        {"timber", "wood used in construction"},
+        {"bitumen", "a black, sticky waterproofing material"},
+        {"benchmark", "a fixed reference for elevation"},
+        {"plot plan", "a drawing of property layout"},
+        {"chainage", "measuring distances along a route"},
+        {"aggregate", "crushed rock, sand, or gravel for construction"},
+        {"retaining wall", "a wall that holds back soil"},
+        {"geotextiles", "fabric used to stabilize soil"},
+        {"soil bearing capacity", "soil’s strength to support weight"},
+        {"settlement", "a structure sinking due to soil compression"},
+        {"structural integrity", "a structure’s ability to stay strong"},
+        {"pavement design", "planning road layers for durability"}
+    };
+
+    string word;
+    cout << "Search for the word: ";
+    cin >> word;
+
+    while (word != "quit") {
+        string lowerWord = word;
+        transform(lowerWord.begin(), lowerWord.end(), lowerWord.begin(), ::tolower); //Convert to lowercase
+
+        if (Dictionary.count(lowerWord)) {
+            cout << endl << word << endl;
+            cout << Dictionary.at(lowerWord) << endl << endl << endl;
+        } else {
+            cout << endl << "Word not found in the dictionary." << endl << endl << endl;
+        }
+        cout << "Search for another word (or type 'quit' to exit): ";
+        cin >> word;
+    }
+
+    return 0;
+}
